@@ -26,7 +26,7 @@ void loop() {
 
     if (i >= 1 && delta > 0) {
       mean += ((float)delta - mean) / i;
-      Serial.println(mean);
+      Serial.println((float)1000 / mean);
     }
 
     // attendre relâchement
