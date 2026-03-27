@@ -21,7 +21,7 @@ void loop() {
 
     delta = temp2 - temp1;
 
-    Serial.println(1/delta);
+    Serial.println(delta);
 
     // attendre relâchement
     while (digitalRead(pinDigital) == 1) {}
