@@ -9,6 +9,7 @@ float lambda = 0;
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("temps_ms,lambda_Hz");
 
   pinMode(pinDigital, INPUT_PULLUP); // IMPORTANT !
 }
@@ -23,6 +24,8 @@ void loop() {
     delta = temp2 - temp1;
     lambda = (float)1 / (delta / 1000);
 
+    Serial.print(temp2);
+    Serial.print(",");
     Serial.println(lambda);
 
     // attendre relâchement
