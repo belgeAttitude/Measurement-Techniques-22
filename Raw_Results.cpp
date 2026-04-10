@@ -22,7 +22,7 @@ void loop() {
     temp2 = millis();
 
     delta = temp2 - temp1;
-    lambda = (float)1 / (delta / 1000);
+    lambda = 1000.0 / delta;
 
     Serial.print(temp2);
     Serial.print(",");
