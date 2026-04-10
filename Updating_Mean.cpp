@@ -9,6 +9,7 @@ float delta = 0;
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("temps_ms,frequence_moyenne_Hz");
 
   pinMode(pinDigital, INPUT_PULLUP); // IMPORTANT !
 }
@@ -26,7 +27,9 @@ void loop() {
 
     if (i >= 1 && delta > 0) {
       mean += ((float)delta - mean) / i;
-      Serial.println((float)1000 / mean);
+      Serial.print(temp2);
+      Serial.print(",");
+      Serial.println(1000.0 / mean);
     }
 
     // attendre relâchement
