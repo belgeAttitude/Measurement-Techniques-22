@@ -1,4 +1,4 @@
-const int pinDigital = 12;
+const int pinDigital = A3;
 
 int valeurDigital = 0;
 float mean = 0;
