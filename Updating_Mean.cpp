@@ -6,6 +6,7 @@ float mean = 0;
 unsigned long temp1 = 0;
 unsigned long temp2 = 0;
 float delta = 0;
+char c;
 
 void setup() {
   Serial.begin(9600);
@@ -36,5 +37,12 @@ void loop() {
     while (digitalRead(pinDigital) == 1) {}
 
     temp1 = millis();
+    char c = Serial.read();
+    if (c == 'q') {
+      Serial.println("Q reçu, boucle infinie !");
+      while (true) {
+        // boucle infinie
+      }
+    }
   }
 }
