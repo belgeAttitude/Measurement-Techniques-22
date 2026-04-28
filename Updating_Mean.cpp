@@ -6,43 +6,41 @@ float mean = 0;
 unsigned long temp1 = 0;
 unsigned long temp2 = 0;
 float delta = 0;
-char c;
 
 void setup() {
   Serial.begin(9600);
   Serial.println("temps_ms,frequence_moyenne_Hz");
 
-  pinMode(pinDigital, INPUT_PULLUP); // IMPORTANT !
+  pinMode(pinDigital, INPUT_PULLUP);
 }
 
 void loop() {
-
   valeurDigital = digitalRead(pinDigital);
 
   if (valeurDigital == 1) { 
     temp2 = millis();
-
     delta = temp2 - temp1;
 
     i++;
 
     if (i >= 1 && delta > 0) {
       mean += ((float)delta - mean) / i;
+
       Serial.print(temp2);
       Serial.print(",");
       Serial.println(1000.0 / mean);
     }
 
-    // attendre relâchement
     while (digitalRead(pinDigital) == 1) {}
 
     temp1 = millis();
+  }
+
+  if (Serial.available()) {
     char c = Serial.read();
     if (c == 'q') {
-      Serial.println("Q reçu, boucle infinie !");
-      while (true) {
-        // boucle infinie
-      }
+      Serial.println("Q recu, arret.");
+      while (true) {}
     }
   }
 }
